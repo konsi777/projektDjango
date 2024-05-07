@@ -1,8 +1,15 @@
 from django.shortcuts import render
-
+from .models import Auto, Klient, Wypozyczenie
 # Create your views here.
 
 def base(request):
     return render(request, "index.html")
 
-#TODO funkcja ktora renderuje rezerwacje.html
+def rezerwacje(request):
+    auta = Auto.objects.all()
+    
+    context = {
+          'auta': auta
+    }
+    
+    return render(request, 'rezerwacje.html', context)

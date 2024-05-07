@@ -22,5 +22,6 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',  views.base, name="index")
+    path('',  views.base, name="index"),
+    path('rezerwacje', views.rezerwacje, name="rezerwacje")
 ]

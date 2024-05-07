@@ -23,8 +23,6 @@ class Auto(models.Model):
     dostepnosc = models.BooleanField(default=True)
     cena_za_dobe = models.PositiveIntegerField()
 
-    def __str__(self):
-        return f'{self.marka} {self.model}'
 
 class Wypozyczenie(models.Model):
     klient = models.ForeignKey(Klient, on_delete=models.CASCADE)

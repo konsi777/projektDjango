@@ -1,1 +1,27 @@
-<!-- TODO stworzenie czegokolwiek -->
+{% extends "base.html" %}
+{% load static%}
+{% block content %}
+<section class="page-section bg-light" id="Auta">
+  {% for auto in auta %}
+  <!-- Auto 1  -->
+  <div class="card mx-auto mb-3" style="max-width: 1000px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{% static "assets/img/auto1.jpg"%}" class="img-fluid rounded-start">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h3 class="card-title">{{ auto.marka }} {{ auto.model }} </h3> 
+          <p><small class="text-body-secondary">{{ auto.typ }}</small></p>
+          <h5> Cena za dobę: {{ auto.cena_za_dobe }} zł </h5>
+          <p>Rok: {{ auto.rocznik }} Przebieg: {{ auto.przebieg }}</p>
+          <p>Moc silnika: {{ auto.moc_silnika }}</p>
+          Skrzynia biegow: {{ auto.skrzynia }}
+          <p><button type="button" class="btn btn-primary mt-4" href= {}>Zarezerwuj</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}
