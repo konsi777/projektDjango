@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static%}
 {% block content %}
-<section class="page-section bg-light" id="Auta">
+<section class="page-section bg-light mt-4" id="Auta">
   {% for auto in auta %}
   <!-- Auto 1  -->
   <div class="card mx-auto mb-3" style="max-width: 1000px;">
@@ -11,13 +11,22 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h3 class="card-title">{{ auto.marka }} {{ auto.model }} </h3> 
-          <p><small class="text-body-secondary">{{ auto.typ }}</small></p>
-          <h5> Cena za dobę: {{ auto.cena_za_dobe }} zł </h5>
-          <p>Rok: {{ auto.rocznik }} Przebieg: {{ auto.przebieg }}</p>
-          <p>Moc silnika: {{ auto.moc_silnika }}</p>
-          Skrzynia biegow: {{ auto.skrzynia }}
-          <p><button type="button" class="btn btn-primary mt-4" href= {}>Zarezerwuj</button></p>
+          <div style="display: flex">
+          <h3 class="card-title" style="margin-right: 0.5em">{{ auto.marka }} {{ auto.model }} </h3> 
+          <small class="text-body-secondary" style="display: inline-block; align-self: center;">{{ auto.typ }}</small>
+          <h5 style="margin-left: auto; margin-right: 0; ">{{ auto.cena_za_dobe }} PLN / za dobę </h5>
+          </div>
+          <p>Rocznik: {{ auto.rocznik }}</p>
+          <p>Przebieg: {{ auto.przebieg }} km</p>
+          <p>Moc silnika: {{ auto.moc_silnika }} KM</p>
+          <div  style="display: flex ">
+            {% if auto.skrzynia == 1 %}
+            Skrzynia biegow: manualna
+            {% else %}
+            Skrzynia biegow: automatyczna
+            {% endif %}
+            <a type="button" class="btn btn-primary" style="margin-left: auto; margin-right: 0;" href= {% url "wypozyczenie" %}>Wypozycz</a>
+          </div>
         </div>
       </div>
     </div>
