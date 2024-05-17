@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',  views.base, name="index"),
     path('rezerwacje', views.rezerwacje, name="rezerwacje"),
-    path("rezerwacje/wypozyczenie", views.wypozyczenie, name="wypozyczenie")
+    path("rezerwacje/wypozyczenie", views.wypozyczenie, name="wypozyczenie"),
+    path("rezerwacje/wypozyczenie/<int:auto_id>", views.wypozyczenie, name="wypozyczenie")
 ]

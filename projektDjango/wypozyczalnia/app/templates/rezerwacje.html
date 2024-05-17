@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 {% load static%}
 {% block content %}
+
 <section class="page-section bg-light mt-4" id="Auta">
+  <form method="POST" action="{% url 'rezerwacje' %}">
+    {% csrf_token %}
+    <div class="text-center mb-3">
+      <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
+      <button class="btn btn-primary" for="btn-check">Rocznik</button>
+    </div>
+
   {% for auto in auta %}
+  {% if auto.dostepnosc == True%}
   <!-- Auto 1  -->
   <div class="card mx-auto mb-3" style="max-width: 1000px;">
     <div class="row g-0">
@@ -25,12 +34,14 @@
             {% else %}
             Skrzynia biegow: automatyczna
             {% endif %}
-            <a type="button" class="btn btn-primary" style="margin-left: auto; margin-right: 0;" href= {% url "wypozyczenie" %}>Wypozycz</a>
+          <a type="button" class="btn btn-primary" style="margin-left: auto; margin-right: 0;" href= {% url "wypozyczenie" auto_id=auto.id %}>Wypozycz</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  {% endif %}
   {% endfor %}
+  </form>
 </section>
 {% endblock %}

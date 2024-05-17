@@ -2,10 +2,13 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <section class="page-section bg-light mt-4" id="Auta">
-  <form method="POST" action ="{% url "wypozyczenie" %}" enctype = "multipart/form-data">
-    {% csrf_token %}
-    {{form|crispy}}
-      <button class="btn btn-primary" style="margin-left: auto; margin-right: 0;">Zatwierdz</button>
-  </form>
+  <div class="container mt-4">
+    <form method="POST" action ="{% url "wypozyczenie" auto_id=auto %}">
+      {% csrf_token %}
+      {{form_klient|crispy}}
+      {{form_wypozyczenie|crispy}}
+      <button class="btn btn-primary mt-4">Zatwierdz</button>
+    </form>
+  </div> 
 </section>
 {% endblock %}
